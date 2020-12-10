@@ -2,11 +2,11 @@
 
 Your new D&D game just arrived!
 
-You have opened a box, take out everything and there is no dice included, what a boomer...
+You have opened a box, take out everything and there is no dice included, what the heck is going on...
 
 No worries. As an `experienced software developer` you can design your own dice manager, right?
 
-Of course, to be more useable it should be `web based`, in form of `REST API`.
+Of course, to be more useable it should be `web based`, in form of `browsable REST API`.
 
 Let's get to work.
 
@@ -15,7 +15,7 @@ Let's get to work.
 ## Models
 
 Dice manager should be simple but functional.
-For sure we need a `Dice` and `Handle` to roll a set of dice.
+For sure we need a `Dice` and `DiceHandle` to roll a set of dice.
 
 ### Dice
 
@@ -23,114 +23,106 @@ For sure we need a `Dice` and `Handle` to roll a set of dice.
 
 In terms of REST API what is expected:
 
+
 ```
-POST /dice
+GET /dice/
+
 {
-    "name": "D6",
-    "faces": 6
-}
-
-ANSWER:
-{
-    "id" : "id-of-a-dice"
-}
-```
-
-```
-GET /dice/%id
-
-ANSWER:
-{
-    "name": "D6",
-    "faces": 6,
-    "roll": 4
-}
-```
-
-```
-GET /dice
-
-ANSWER:
-{
-    dice: [
+    "count": 3,
+    "next": "http://0.0.0.0/dice/?page=2",
+    "previous": null,
+    "results": [
         {
-            "id": 1,
+            "created": "2020-12-09T23:21:45.849271Z",
+            "faces": 6,
             "name": "D6",
-            "faces": 6
+            "roll": 3,
+            "updated": "2020-12-09T23:21:45.849315Z",
+            "url": "http://0.0.0.0/dice/5/"
         },
         {
-            "id": 2,
-            "name": "D4",
-            "faces": 4
+            "created": "2020-12-10T10:58:22.271070Z",
+            "faces": 6,
+            "name": "D6",
+            "roll": 4,
+            "updated": "2020-12-10T10:58:22.271144Z",
+            "url": "http://0.0.0.0/dice/6/"
         }
     ]
 }
 ```
 
 ```
-DELETE /dice/%id
+GET /dice/5/
+
+{
+    "created": "2020-12-09T23:21:45.849271Z",
+    "faces": 6,
+    "name": "D6",
+    "roll": 5,
+    "updated": "2020-12-09T23:21:45.849315Z",
+    "url": "http://0.0.0.0/dice/5/"
+}
+
 ```
+
 
 ---
 
-### Handle
+### Dice handle
 
-`Handle` should have some number of `dice` and `name`. When we `roll` that `handle` it should return `value` representing a sum of rolls of each `dice` in that `handle`.
+`DiceHandle` should have some number of `dice` and `name`. When we `roll` that `dicehandle` it should return `value` representing a sum of rolls of each `dice` in that `dicehandle`.
 
 In terms of REST API what is expected:
 
 
+
+
 ```
-POST /handle
+GET /dicehandle/
+
 {
-    "name": "D&D",
-    "set": [
-        "id-of-dice",
-        "another-id-of-dice",
-        "id-of-not-existing-dice"
-    ]
-}
-
-ANSWER:
-{
-    "id" : "id-of-a-handle"
-}
-```
-
-```
-GET /handle/%id
-
-ANSWER:
-{
-    "name": "D&D",
-    "roll": 4,
-    "set": [
-        "id-of-dice",
-        "another-id-of-dice"
-    ]
-}
-```
-
-```
-GET /handle
-
-ANSWER:
-{
-    handle: [
+    "count": 2,
+    "next": null,
+    "previous": null,
+    "results": [
         {
-            "id": 1,
-            "name": "D&D"
+            "created": "2020-12-09T23:24:55.783012Z",
+            "dice": [
+                "http://0.0.0.0/dice/5/",
+                "http://0.0.0.0/dice/2/"
+            ],
+            "name": "Dice handle D6 + D10",
+            "roll": 4,
+            "updated": "2020-12-09T23:25:25.222438Z",
+            "url": "http://0.0.0.0/dicehandle/1/"
         },
         {
-            "id": 2,
-            "name": "Another handle name"
+            "created": "2020-12-10T14:08:24.740813Z",
+            "dice": [],
+            "name": "Dice handle",
+            "roll": 0,
+            "updated": "2020-12-10T14:08:24.740873Z",
+            "url": "http://0.0.0.0/dicehandle/2/"
         }
     ]
 }
 ```
 
 ```
-DELETE /handle/%id
+GET /dicehandle/1/
+
+{
+    "created": "2020-12-09T23:24:55.783012Z",
+    "dice": [
+        "http://0.0.0.0/dice/5/",
+        "http://0.0.0.0/dice/2/"
+    ],
+    "name": "Dice handle D6 + D10",
+    "roll": 11,
+    "updated": "2020-12-09T23:25:25.222438Z",
+    "url": "http://0.0.0.0/dicehandle/1/"
+}
 ```
 
 ---
@@ -146,10 +138,13 @@ What is more important, now we can play with your `dice manager`, too ;)
 # Guidelines
 
  - use `Python 3.8` or newer
- - use `Django` & `DRF` - don't reinvent wheel ;)
+ - use `Django` & `DRF` - don't reinvent a wheel ;)
+ - if you think that another framework is perfect tool for this job - use it
  - follow Python standards and good practices
  - remember to implement `unit` and `integration tests` for any code you write (`pytest` is recommended)
  - check your code with `flake8` before submitting the solution
  - include a `README.md` file with instructions for running the application and its tests
  - please use `Docker` and `docker-compose`
- - check if your solution meets our basic expectations of correctness with included `e2e-docker-compose.yaml` file
+ - check if your solution meets our basic expectations of correctness with included `e2e-docker-compose.yml` file
+ - if you can point us to your solution deployed directly from git repository to one of cloud services it will be awsome
+
