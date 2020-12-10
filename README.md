@@ -24,46 +24,46 @@ For sure we need a `Dice` and `DiceHandle` to roll a set of dice.
 In terms of REST API what is expected:
 
 
-```
-GET /dice/
+    GET /dice/
 
-{
-    "count": 3,
-    "next": "http://0.0.0.0/dice/?page=2",
-    "previous": null,
-    "results": [
-        {
-            "created": "2020-12-09T23:21:45.849271Z",
-            "faces": 6,
-            "name": "D6",
-            "roll": 3,
-            "updated": "2020-12-09T23:21:45.849315Z",
-            "url": "http://0.0.0.0/dice/5/"
-        },
-        {
-            "created": "2020-12-10T10:58:22.271070Z",
-            "faces": 6,
-            "name": "D6",
-            "roll": 4,
-            "updated": "2020-12-10T10:58:22.271144Z",
-            "url": "http://0.0.0.0/dice/6/"
-        }
-    ]
-}
-```
+    {
+        "count": 3,
+        "next": "http://0.0.0.0/dice/?page=2",
+        "previous": null,
+        "results": [
+            {
+                "created": "2020-12-09T23:21:45.849271Z",
+                "faces": 6,
+                "name": "D6",
+                "roll": 3,
+                "updated": "2020-12-09T23:21:45.849315Z",
+                "url": "http://0.0.0.0/dice/5/"
+            },
+            {
+                "created": "2020-12-10T10:58:22.271070Z",
+                "faces": 6,
+                "name": "D6",
+                "roll": 4,
+                "updated": "2020-12-10T10:58:22.271144Z",
+                "url": "http://0.0.0.0/dice/6/"
+            }
+        ]
+    }
 
-```
-GET /dice/5/
 
-{
-    "created": "2020-12-09T23:21:45.849271Z",
-    "faces": 6,
-    "name": "D6",
-    "roll": 5,
-    "updated": "2020-12-09T23:21:45.849315Z",
-    "url": "http://0.0.0.0/dice/5/"
-}
-```
+and for individual `dice`
+
+
+    GET /dice/5/
+
+    {
+        "created": "2020-12-09T23:21:45.849271Z",
+        "faces": 6,
+        "name": "D6",
+        "roll": 5,
+        "updated": "2020-12-09T23:21:45.849315Z",
+        "url": "http://0.0.0.0/dice/5/"
+    }
 
 
 ---
@@ -74,52 +74,54 @@ GET /dice/5/
 
 In terms of REST API what is expected:
 
-```
-GET /dicehandle/
 
-{
-    "count": 2,
-    "next": null,
-    "previous": null,
-    "results": [
-        {
-            "created": "2020-12-09T23:24:55.783012Z",
-            "dice": [
-                "http://0.0.0.0/dice/5/",
-                "http://0.0.0.0/dice/2/"
-            ],
-            "name": "Dice handle D6 + D10",
-            "roll": 4,
-            "updated": "2020-12-09T23:25:25.222438Z",
-            "url": "http://0.0.0.0/dicehandle/1/"
-        },
-        {
-            "created": "2020-12-10T14:08:24.740813Z",
-            "dice": [],
-            "name": "Dice handle",
-            "roll": 0,
-            "updated": "2020-12-10T14:08:24.740873Z",
-            "url": "http://0.0.0.0/dicehandle/2/"
-        }
-    ]
-}
-```
+    GET /dicehandle/
 
-```
-GET /dicehandle/1/
+    {
+        "count": 2,
+        "next": null,
+        "previous": null,
+        "results": [
+            {
+                "created": "2020-12-09T23:24:55.783012Z",
+                "dice": [
+                    "http://0.0.0.0/dice/5/",
+                    "http://0.0.0.0/dice/2/"
+                ],
+                "name": "Dice handle D6 + D10",
+                "roll": 4,
+                "updated": "2020-12-09T23:25:25.222438Z",
+                "url": "http://0.0.0.0/dicehandle/1/"
+            },
+            {
+                "created": "2020-12-10T14:08:24.740813Z",
+                "dice": [],
+                "name": "Dice handle",
+                "roll": 0,
+                "updated": "2020-12-10T14:08:24.740873Z",
+                "url": "http://0.0.0.0/dicehandle/2/"
+            }
+        ]
+    }
 
-{
-    "created": "2020-12-09T23:24:55.783012Z",
-    "dice": [
-        "http://0.0.0.0/dice/5/",
-        "http://0.0.0.0/dice/2/"
-    ],
-    "name": "Dice handle D6 + D10",
-    "roll": 11,
-    "updated": "2020-12-09T23:25:25.222438Z",
-    "url": "http://0.0.0.0/dicehandle/1/"
-}
-```
+
+and for individual `dice handle`
+
+
+    GET /dicehandle/1/
+
+    {
+        "created": "2020-12-09T23:24:55.783012Z",
+        "dice": [
+            "http://0.0.0.0/dice/5/",
+            "http://0.0.0.0/dice/2/"
+        ],
+        "name": "Dice handle D6 + D10",
+        "roll": 11,
+        "updated": "2020-12-09T23:25:25.222438Z",
+        "url": "http://0.0.0.0/dicehandle/1/"
+    }
+
 
 ---
 
