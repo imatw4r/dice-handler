@@ -63,7 +63,6 @@ GET /dice/5/
     "updated": "2020-12-09T23:21:45.849315Z",
     "url": "http://0.0.0.0/dice/5/"
 }
-
 ```
 
 
@@ -74,9 +73,6 @@ GET /dice/5/
 `DiceHandle` should have some number of `dice` and `name`. When we `roll` that `dicehandle` it should return `value` representing a sum of rolls of each `dice` in that `dicehandle`.
 
 In terms of REST API what is expected:
-
-
-
 
 ```
 GET /dicehandle/
