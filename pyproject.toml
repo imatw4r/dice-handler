@@ -1,0 +1,17 @@
+[tool.poetry]
+name = "django-drf-dice-roll"
+version = "0.1.0"
+description = "Simple Dice rolling service"
+authors = ["Bartek Krzys <bartek.krzys@gmail.com>"]
+
+[tool.poetry.dependencies]
+python = "3.8.3"
+Django = "^3.1.4"
+djangorestframework = "^3.12.2"
+
+[tool.poetry.dev-dependencies]
+pytest = "^6.1.2"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
