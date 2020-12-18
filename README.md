@@ -4,7 +4,7 @@ Your new D&D game just arrived!
 
 You have opened a box, take out everything and there is no dice included, what the heck is going on...
 
-No worries. As an `experienced software developer` you can design your own dice manager, right?
+No worries. As an `experienced software developer` you can design your own dice roller, right?
 
 Of course, to be more useable it should be `web based`, in form of `browsable REST API`.
 
@@ -14,7 +14,7 @@ Let's get to work.
 
 ## Models
 
-Dice manager should be simple but functional.
+Dice roller should be simple but functional.
 For sure we need a `Dice` and `DiceHandle` to roll a set of dice.
 
 ### Dice
@@ -127,9 +127,9 @@ and for individual `dice handle`
 
 # Outro
 
-After a few hours your new shiny `dice manager` is ready and you can start palying. Yay!!!
+After a few hours your new shiny `dice roller` is ready and you can start palying. Yay!!!
 
-What is more important, now we can play with your `dice manager`, too ;)
+What is more important, now we can play with your `dice roller`, too ;)
 
 ---
 
@@ -143,6 +143,6 @@ What is more important, now we can play with your `dice manager`, too ;)
  - check your code with `flake8` before submitting the solution
  - include a `README.md` file with instructions for running the application and its tests
  - please use `Docker` and `docker-compose`
- - check if your solution meets our basic expectations of correctness with included `e2e-docker-compose.yml` file
+ - check if your solution meets our basic expectations of correctness with included `docker-compose.yml` file, just put your solution in expected folder or provide Docker image build by you - e2e test results will land in ./results folder
  - if you can point us to your solution deployed directly from git repository to one of cloud services it will be awsome
 

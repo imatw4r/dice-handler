@@ -1,0 +1,6 @@
+**/app
+.garden
+.vscode
+**/venv*
+**.DS_Store/
+/results

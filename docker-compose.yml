@@ -1,0 +1,22 @@
+version: '3.9'
+
+services:
+  # System Under Test
+  sut:
+    image: dice-roller
+    build:
+      context: ./dice_roller
+      dockerfile: ./Dockerfile
+    ports:
+      - 80:80
+  
+  # e2e test container
+  e2e:
+    image: dice-roller-e2e
+    build:
+      context: ./e2e
+      dockerfile: ./Dockerfile
+    volumes:
+      - ./results:/app/results
+    depends_on:
+      - sut
