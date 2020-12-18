@@ -143,6 +143,17 @@ What is more important, now we can play with your `dice roller`, too ;)
  - check your code with `flake8` before submitting the solution
  - include a `README.md` file with instructions for running the application and its tests
  - please use `Docker` and `docker-compose`
- - check if your solution meets our basic expectations of correctness with included `docker-compose.yml` file, just put your solution in expected folder or provide Docker image build by you - e2e test results will land in ./results folder
  - if you can point us to your solution deployed directly from git repository to one of cloud services it will be awsome
+
+
+---
+# E2E tests
+
+ Check if your solution meets our basic expectations of correctness with included `docker-compose.yml` file.
+ Just put your solution in expected folder or provide Docker image build by you.
+ E2E test results will land in `./results` folder.
+
+ Start E2E test with
+    
+    docker-compose up --build
 
