@@ -136,3 +136,9 @@ dmypy.json
 
 # Cython debug symbols
 cython_debug/
+**/app
+.garden
+.vscode
+**/venv*
+**.DS_Store/
+/results

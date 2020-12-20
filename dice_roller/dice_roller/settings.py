@@ -25,7 +25,7 @@ SECRET_KEY = "%5vd%76t9$!x$0aapx+acuu5owclnes2@sro$_ow+df)!gvaos"
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
@@ -102,6 +102,11 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+REST_FRAMEWORK = {
+    "DEFAULT_PAGINATION_CLASS": "rest_framework.pagination.LimitOffsetPagination",
+    "PAGE_SIZE": 2,
+}
+
 
 # Internationalization
 # https://docs.djangoproject.com/en/3.1/topics/i18n/
@@ -122,3 +127,5 @@ USE_TZ = True
 
 STATIC_URL = "/static/"
 STATIC_ROOT = "static"
+
+APPEND_SLASH = False

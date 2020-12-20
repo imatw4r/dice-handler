@@ -23,12 +23,12 @@ from dice.api.views import DiceViewSet
 from dice_manager.api.views import DiceManagerViewSet
 
 
-api_router = DefaultRouter()
+api_router = DefaultRouter(trailing_slash=True)
 api_router.register("dicehandle", DiceManagerViewSet)
 api_router.register("dice", DiceViewSet)
 
 
-urlpatterns = [path("admin/", admin.site.urls), path("", include(api_router.urls))]
+urlpatterns = [path("admin/", admin.site.urls)] + api_router.urls
 
 if settings.DEBUG:
     urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

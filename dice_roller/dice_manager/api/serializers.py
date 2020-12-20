@@ -3,7 +3,7 @@ from dice_manager.models import DiceManager
 
 
 class DiceManagerSerializer(serializers.HyperlinkedModelSerializer):
-    roll = serializers.SerializerMethodField("dice_roll")
+    roll = serializers.SerializerMethodField("dice_roll", read_only=True)
 
     class Meta:
         model = DiceManager
